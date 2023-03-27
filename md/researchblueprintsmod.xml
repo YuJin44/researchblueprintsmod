@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mdscript name="Researchblueprintsmod" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="md.xsd">
+<mdscript name="ResearchBlueprintsMod" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="md.xsd">
   <cues>
-    
+    <cue name="DiablogOptions" instantiate="true">
+      <conditions>
+        <event_conversation_started conversation="default" actor="md.$PersistentCharacters.$BosoTa"/>
+      </conditions>
+      <actions>
+        <add_player_choice text="'choice1'" section="Researchblueprintssec1" />
+      </actions>
+    </cue>
+    <cue name="Researchblueprintssec1_handler" instantiate="true">
+      <conditions>
+        <event_conversation_next_section section="Researchblueprintssec1"/>
+      </conditions>
+      <actions>
+        <show_notification text="'Choice 1'" sound="notification_warning" />
+      </actions>
+    </cue>
   </cues>
 </mdscript>
