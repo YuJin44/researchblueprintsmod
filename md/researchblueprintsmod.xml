@@ -34,9 +34,9 @@
       </conditions>
       <actions>
         <debug_to_file name="'modules'" directory="'RBM'" text="'init'" append="false"/>
-        <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.module"/>
+        <get_ware_definition result="$wares" flags="allowplayerblueprint"/>
         <do_for_each in="$wares" name="$ware">
-          <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s, %s, %s, %s'.[$ware.averageprice, $ware.resources.{ware.claytronics}.count,$ware.resources.{ware.energycells}.count,$ware.resources.{ware.hullparts}.count,$ware.id]"/>
+          <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s, %s'.[$ware.id, $ware.objectmacro.class, $ware.tags]"/>
         </do_for_each>
         <!-- <add_blueprints wares="$wares"/> -->
       </actions>
