@@ -34,9 +34,11 @@
       </conditions>
       <actions>
         <debug_to_file name="'modules'" directory="'RBM'" text="'init'" append="false"/>
-        <get_ware_definition result="$wares" flags="allowplayerblueprint"/>
+        <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.ship"/>
         <do_for_each in="$wares" name="$ware">
-          <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s, %s'.[$ware.id, $ware.objectmacro.class, $ware.tags]"/>
+          <do_if value="$ware.hastag.noplayerbuild or $ware.hastag.noblueprint" negate="true">
+            <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s, %s, %s'.[$ware.id, $ware.objectmacro.class, $ware.resources.table, $ware.averageprice]"/>
+          </do_if>
         </do_for_each>
         <!-- <add_blueprints wares="$wares"/> -->
       </actions>
