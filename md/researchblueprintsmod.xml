@@ -15,6 +15,9 @@
       </conditions>
       <actions>
         <show_notification text="'Choice 1'" sound="notification_warning" />
+        <add_research ware="ware.rbm_testware" />
+        <add_encyclopedia_entry type="researchables" item="'rbm_testware'"/>
+        <add_encyclopedia_entry type="researchables" item="'rbm_testware2'"/>
       </actions>
     </cue>
   </cues>

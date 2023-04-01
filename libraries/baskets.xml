@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diff>
+	<add sel="/baskets/basket[@id='research_gamestart_common']/wares" >
+			  <ware ware="rbm_testware"/>
+			  <ware ware="rbm_testware2"/>
+	</add>
+</diff>
