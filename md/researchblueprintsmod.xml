@@ -35,12 +35,8 @@
       <actions>
         <debug_to_file name="'modules'" directory="'RBM'" text="'init'" append="false"/>
         <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.module"/>
-        <set_value name="$wares.{1}" exact="ware.advancedcomposites" operation="insert"/>
         <do_for_each in="$wares" name="$ware">
-          <debug_to_file name="'modules'" directory="'RBM'" text="'ID: %s, ware: %s, resources amount: %s'.[$ware.id, $ware.name, $ware.resources.list]"/>
-          <do_for_each in="$ware.resources.list" name="$resource">
-            <debug_to_file name="'modules'" directory="'RBM'" text="'  resource: %s, ID: %s, amount: %s'.[$resource.name, $resource.id, $ware.resources.{$resource}.count]"/>
-          </do_for_each>
+          <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s, %s, %s, %s'.[$ware.averageprice, $ware.resources.{ware.claytronics}.count,$ware.resources.{ware.energycells}.count,$ware.resources.{ware.hullparts}.count,$ware.id]"/>
         </do_for_each>
         <!-- <add_blueprints wares="$wares"/> -->
       </actions>
