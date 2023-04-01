@@ -7,16 +7,42 @@
       </conditions>
       <actions>
         <add_player_choice text="'choice1'" section="Researchblueprintssec1" />
+        <add_player_choice text="'choice2'" section="Researchblueprintssec2" />
       </actions>
     </cue>
     <cue name="Researchblueprintssec1_handler" instantiate="true">
       <conditions>
-        <event_conversation_next_section section="Researchblueprintssec1"/>
+        <check_any>
+          <event_conversation_next_section section="Researchblueprintssec1"/>
+          <event_conversation_returned_to_section section="Researchblueprintssec1"/>
+        </check_any>
       </conditions>
       <actions>
         <show_notification text="'Choice 1'" sound="notification_warning" />
         <add_encyclopedia_entry type="researchables" item="'rbm_testware'"/>
         <remove_research ware="ware.rbm_testware" />
+        <get_ware_definition result="$wares" flags="blueprint"/>
+        <add_blueprints wares="$wares"/>
+      </actions>
+    </cue>
+    <cue name="Researchblueprintssec2_handler" instantiate="true">
+      <conditions>
+        <check_any>
+          <event_conversation_next_section section="Researchblueprintssec2"/>
+          <event_conversation_returned_to_section section="Researchblueprintssec2"/>
+        </check_any>
+      </conditions>
+      <actions>
+        <debug_to_file name="'modules'" directory="'RBM'" text="'init'" append="false"/>
+        <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.module"/>
+        <set_value name="$wares.{1}" exact="ware.advancedcomposites" operation="insert"/>
+        <do_for_each in="$wares" name="$ware">
+          <debug_to_file name="'modules'" directory="'RBM'" text="'ID: %s, ware: %s, resources amount: %s'.[$ware.id, $ware.name, $ware.resources.list]"/>
+          <do_for_each in="$ware.resources.list" name="$resource">
+            <debug_to_file name="'modules'" directory="'RBM'" text="'  resource: %s, ID: %s, amount: %s'.[$resource.name, $resource.id, $ware.resources.{$resource}.count]"/>
+          </do_for_each>
+        </do_for_each>
+        <!-- <add_blueprints wares="$wares"/> -->
       </actions>
     </cue>
   </cues>
