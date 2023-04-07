@@ -19,10 +19,10 @@
       </conditions>
       <actions>
         <show_notification text="'Choice 1'" sound="notification_warning" />
-        <add_encyclopedia_entry type="researchables" item="'rbm_testware'"/>
-        <remove_research ware="ware.rbm_testware" />
+        <add_encyclopedia_entry type="researchables" item="'rbm_consumables_1'"/>
+<!--         <remove_research ware="ware.rbm_testware" />
         <get_ware_definition result="$wares" flags="blueprint"/>
-        <add_blueprints wares="$wares"/>
+        <add_blueprints wares="$wares"/> -->
       </actions>
     </cue>
     <cue name="Researchblueprintssec2_handler" instantiate="true">
@@ -34,13 +34,13 @@
       </conditions>
       <actions>
         <debug_to_file name="'modules'" directory="'RBM'" text="'init'" append="false"/>
-        <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.ship"/>
-        <do_for_each in="$wares" name="$ware">
+        <get_ware_definition result="$wares" flags="allowplayerblueprint"/>
+<!--         <do_for_each in="$wares" name="$ware">
           <do_if value="$ware.hastag.noplayerbuild or $ware.hastag.noblueprint" negate="true">
-            <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s, %s, %s'.[$ware.id, $ware.objectmacro.class, $ware.resources.table, $ware.averageprice]"/>
+            <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s'.[$ware.id, $ware.name]"/>
           </do_if>
         </do_for_each>
-        <!-- <add_blueprints wares="$wares"/> -->
+ -->        <add_blueprints wares="$wares"/>
       </actions>
     </cue>
   </cues>
