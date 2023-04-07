@@ -1,26 +1,366 @@
 <?xml version="1.0" encoding="utf-8"?>
 <diff>
   <add sel="/wares">
-    <ware id="rbm_testware" name="'RBM_testware'" description="'RBM_testware'" transport="research"
-      volume="1" tags="research" sortorder="101">
-      <price min="1" average="1" max="1" />
-      <research time="20" />
-    </ware>
-    <ware id="rbm_testware2" name="'RBM_testware2'" description="'RBM_testware2'" transport="research" volume="1" tags="research" sortorder="101">
-      <price min="1" average="1" max="1" />
-      <research time="20">
-        <research>
-          <ware ware="rbm_testware" />
-        </research>
-      </research>
-    </ware>
-    <ware id="rbm_consumables_1" name="{1001,97}: {1001,8003}" description="{1001,97}: {1001,8003}" transport="research" volume="1" tags="research" sortorder="102">
+    <ware id="rbm_consumable_1" name="{1001,97}: {1001,8003}" description="{1001,97}: {1001,8003}" transport="research" volume="1" tags="research" sortorder="102">
       <price min="1" average="720" max="1300" />
-      <research time="600">
+      <research time="300">
         <primary>
           <ware ware="smartchips" amount="3" />
           <ware ware="missilecomponents" amount="42" />
           <ware ware="energycells" amount="95" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_consumable_2" name="{1001,97}: {1001,8003}" description="{1001,97}: {1001,8003}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1301" average="1900" max="4200" />
+      <research time="600">
+        <primary>
+          <ware ware="smartchips" amount="18" />
+          <ware ware="missilecomponents" amount="120" />
+          <ware ware="energycells" amount="145" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_consumable_3" name="{1001,97}: {1001,8003}" description="{1001,97}: {1001,8003}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="4201" average="6400" max="18800" />
+      <research time="900">
+        <primary>
+          <ware ware="smartchips" amount="120" />
+          <ware ware="missilecomponents" amount="525" />
+          <ware ware="energycells" amount="70" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_consumable_4" name="{1001,97}: {1001,8003}" description="{1001,97}: {1001,8003}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="18801" average="31150" max="70000" />
+      <research time="1200">
+        <primary>
+          <ware ware="smartchips" amount="815" />
+          <ware ware="missilecomponents" amount="450" />
+          <ware ware="energycells" amount="200" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_turret_1" name="{1001,97}: {1001,1319}" description="{1001,97}: {1001,1319}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="25500" max="46500" />
+      <research time="600">
+        <primary>
+          <ware ware="advancedelectronics" amount="13" />
+          <ware ware="turretcomponents" amount="105" />
+          <ware ware="energycells" amount="180" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_turret_2" name="{1001,97}: {1001,1319}" description="{1001,97}: {1001,1319}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="46501" average="67500" max="109000" />
+      <research time="900">
+        <primary>
+          <ware ware="advancedelectronics" amount="50" />
+          <ware ware="turretcomponents" amount="230" />
+          <ware ware="energycells" amount="250" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_turret_3" name="{1001,97}: {1001,1319}" description="{1001,97}: {1001,1319}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="109001" average="150500" max="450000" />
+      <research time="1200">
+        <primary>
+          <ware ware="advancedelectronics" amount="170" />
+          <ware ware="turretcomponents" amount="340" />
+          <ware ware="energycells" amount="180" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_weapon_1" name="{1001,97}: {1001,2663}" description="{1001,97}: {1001,2663}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="12650" max="28500" />
+      <research time="300">
+        <primary>
+          <ware ware="advancedelectronics" amount="11" />
+          <ware ware="weaponcomponents" amount="35" />
+          <ware ware="energycells" amount="105" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_weapon_2" name="{1001,97}: {1001,2663}" description="{1001,97}: {1001,2663}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="28501" average="45000" max="90000" />
+      <research time="750">
+        <primary>
+          <ware ware="advancedelectronics" amount="45" />
+          <ware ware="weaponcomponents" amount="120" />
+          <ware ware="energycells" amount="140" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_weapon_3" name="{1001,97}: {1001,2663}" description="{1001,97}: {1001,2663}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="90001" average="135000" max="230000" />
+      <research time="900">
+        <primary>
+          <ware ware="advancedelectronics" amount="95" />
+          <ware ware="weaponcomponents" amount="480" />
+          <ware ware="energycells" amount="200" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_weapon_4" name="{1001,97}: {1001,2663}" description="{1001,97}: {1001,2663}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="230001" average="326000" max="806000" />
+      <research time="1050">
+        <primary>
+          <ware ware="advancedelectronics" amount="350" />
+          <ware ware="weaponcomponents" amount="680" />
+          <ware ware="energycells" amount="180" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_weapon_5" name="{1001,97}: {1001,2663}" description="{1001,97}: {1001,2663}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="806001" average="1286000" max="3000000" />
+      <research time="1200">
+        <primary>
+          <ware ware="advancedelectronics" amount="1560" />
+          <ware ware="weaponcomponents" amount="2450" />
+          <ware ware="energycells" amount="245" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_1" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="106900" max="346500" />
+      <research time="300">
+        <primary>
+          <ware ware="hullparts" amount="70" />
+          <ware ware="claytronics" amount="20" />
+          <ware ware="energycells" amount="40" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_2" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="346501" average="586700" max="1687500" />
+      <research time="600">
+        <primary>
+          <ware ware="hullparts" amount="410" />
+          <ware ware="claytronics" amount="110" />
+          <ware ware="energycells" amount="210" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_3" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1687501" average="2788000" max="8241500" />
+      <research time="900">
+        <primary>
+          <ware ware="hullparts" amount="1835" />
+          <ware ware="claytronics" amount="500" />
+          <ware ware="energycells" amount="1000" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_4" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="8241501" average="13695000" max="30975000" />
+      <research time="1200">
+        <primary>
+          <ware ware="hullparts" amount="9000" />
+          <ware ware="claytronics" amount="2450" />
+          <ware ware="energycells" amount="4900" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_5" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="30975001" average="48250000" max="74720000" />
+      <research time="1500">
+        <primary>
+          <ware ware="hullparts" amount="31680" />
+          <ware ware="claytronics" amount="8625" />
+          <ware ware="energycells" amount="17250" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_6" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="74720001" average="101185000" max="157470000" />
+      <research time="2400">
+        <primary>
+          <ware ware="hullparts" amount="66530" />
+          <ware ware="claytronics" amount="18110" />
+          <ware ware="energycells" amount="38325" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_7" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="157470001" average="213755000" max="350000000" />
+      <research time="3600">
+        <primary>
+          <ware ware="hullparts" amount="140510" />
+          <ware ware="claytronics" amount="38250" />
+          <ware ware="energycells" amount="80950" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_shield_1" name="{1001,97}: {1001,2}" description="{1001,97}: {1001,2}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="12260" max="35100" />
+      <research time="300">
+        <primary>
+          <ware ware="fieldcoils" amount="30" />
+          <ware ware="shieldcomponents" amount="65" />
+          <ware ware="energycells" amount="200" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_shield_2" name="{1001,97}: {1001,2}" description="{1001,97}: {1001,2}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="35101" average="58000" max="148000" />
+      <research time="600">
+        <primary>
+          <ware ware="fieldcoils" amount="105" />
+          <ware ware="shieldcomponents" amount="250" />
+          <ware ware="energycells" amount="500" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_shield_3" name="{1001,97}: {1001,2}" description="{1001,97}: {1001,2}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="12260" max="35100" />
+      <research time="900">
+        <primary>
+          <ware ware="fieldcoils" amount="640" />
+          <ware ware="shieldcomponents" amount="610" />
+          <ware ware="energycells" amount="1375" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_1" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="152000" max="238500" />
+      <research time="300">
+        <primary>
+          <ware ware="hullparts" amount="1400" />
+          <ware ware="energycells" amount="660" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_2" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="238501" average="325000" max="554500" />
+      <research time="500">
+        <primary>
+          <ware ware="hullparts" amount="3010" />
+          <ware ware="energycells" amount="1265" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_3" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="554501" average="784000" max="1420000" />
+      <research time="660">
+        <primary>
+          <ware ware="hullparts" amount="7400" />
+          <ware ware="energycells" amount="1345" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_4" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1420001" average="2055000" max="3637500" />
+      <research time="800">
+        <primary>
+          <ware ware="hullparts" amount="19160" />
+          <ware ware="energycells" amount="6360" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_5" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="3637501" average="5222000" max="8434000" />
+      <research time="1000">
+        <primary>
+          <ware ware="hullparts" amount="48935" />
+          <ware ware="energycells" amount="13550" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_6" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="8434001" average="11646000" max="22125500" />
+      <research time="1300">
+        <primary>
+          <ware ware="hullparts" amount="109390" />
+          <ware ware="energycells" amount="26835" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_7" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="22125501" average="32605000" max="70000000" />
+      <research time="1500">
+        <primary>
+          <ware ware="hullparts" amount="307750" />
+          <ware ware="energycells" amount="55650" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_engine_1" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="10750" max="33500" />
+      <research time="300">
+        <primary>
+          <ware ware="engineparts" amount="55" />
+          <ware ware="antimatterconverters" amount="15" />
+          <ware ware="energycells" amount="145" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_engine_2" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="33501" average="56000" max="116000" />
+      <research time="420">
+        <primary>
+          <ware ware="engineparts" amount="220" />
+          <ware ware="antimatterconverters" amount="145" />
+          <ware ware="energycells" amount="285" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_engine_3" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="116001" average="176000" max="266000" />
+      <research time="570">
+        <primary>
+          <ware ware="engineparts" amount="680" />
+          <ware ware="antimatterconverters" amount="470" />
+          <ware ware="energycells" amount="460" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_engine_4" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="266001" average="356000" max="428000" />
+      <research time="690">
+        <primary>
+          <ware ware="engineparts" amount="1110" />
+          <ware ware="antimatterconverters" amount="1140" />
+          <ware ware="energycells" amount="520" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_engine_5" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="428001" average="500000" max="1285000" />
+      <research time="800">
+        <primary>
+          <ware ware="engineparts" amount="1400" />
+          <ware ware="antimatterconverters" amount="1785" />
+          <ware ware="energycells" amount="570" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_engine_6" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1285001" average="2070000" max="4550000" />
+      <research time="960">
+        <primary>
+          <ware ware="engineparts" amount="5865" />
+          <ware ware="antimatterconverters" amount="7450" />
+          <ware ware="energycells" amount="2255" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_engine_7" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="4550001" average="7030000" max="10990000" />
+      <research time="1100">
+        <primary>
+          <ware ware="engineparts" amount="12000" />
+          <ware ware="antimatterconverters" amount="30000" />
+          <ware ware="energycells" amount="400" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_engine_8" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="10990001" average="14950000" max="30000000" />
+      <research time="1300">
+        <primary>
+          <ware ware="engineparts" amount="24000" />
+          <ware ware="antimatterconverters" amount="65000" />
+          <ware ware="energycells" amount="400" />
         </primary>
       </research>
     </ware>
