@@ -6,41 +6,42 @@
         <event_conversation_started conversation="default" actor="md.$PersistentCharacters.$BosoTa"/>
       </conditions>
       <actions>
-        <add_player_choice text="'choice1'" section="Researchblueprintssec1" />
-        <add_player_choice text="'choice2'" section="Researchblueprintssec2" />
+        <do_if value="@md.ExtendedConversationMenu.Main.exists">
+          <set_value name="md.ExtendedConversationMenu.Main.$convOptions.$researchBlueprintsMod" exact="table[ $signalCue = RBM_Main, $params = [] ]"/>
+        </do_if>
+        <do_else>
+          <signal_cue_instantly cue="RBM_Main"/>
+        </do_else>
       </actions>
     </cue>
-    <cue name="Researchblueprintssec1_handler" instantiate="true">
+    <cue name="RBM_Main" instantiate="true">
       <conditions>
         <check_any>
-          <event_conversation_next_section section="Researchblueprintssec1"/>
-          <event_conversation_returned_to_section section="Researchblueprintssec1"/>
+          <event_cue_signalled />
+          <check_all>
+            <event_conversation_returned_to_section section="default" actor="md.$PersistentCharacters.$BosoTa"/>
+            <check_value value="@md.ExtendedConversationMenu.Main.exists" negate="true"/>
+          </check_all>
         </check_any>
       </conditions>
       <actions>
-        <show_notification text="'Choice 1'" sound="notification_warning" />
-        <add_encyclopedia_entry type="researchables" item="'rbm_consumables_1'"/>
-<!--         <remove_research ware="ware.rbm_testware" />
-        <get_ware_definition result="$wares" flags="blueprint"/>
-        <add_blueprints wares="$wares"/> -->
+        <add_player_choice_sub text="'%s %s'.[{1001,97}, {1001,7400}]" section="RBM_Main_Entry" comment="Blueprints research"/>
+        <do_if value="@md.ExtendedConversationMenu.Main.exists" negate="true">
+          <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
+        </do_if>
       </actions>
     </cue>
-    <cue name="Researchblueprintssec2_handler" instantiate="true">
+    <cue name="RBM_Main_Entry_handler" instantiate="true">
       <conditions>
         <check_any>
-          <event_conversation_next_section section="Researchblueprintssec2"/>
-          <event_conversation_returned_to_section section="Researchblueprintssec2"/>
+          <event_conversation_next_section section="RBM_Main_Entry"/>
+          <event_conversation_returned_to_section section="RBM_Main_Entry"/>
         </check_any>
       </conditions>
       <actions>
-        <debug_to_file name="'modules'" directory="'RBM'" text="'init'" append="false"/>
-        <get_ware_definition result="$wares" flags="allowplayerblueprint"/>
-<!--         <do_for_each in="$wares" name="$ware">
-          <do_if value="$ware.hastag.noplayerbuild or $ware.hastag.noblueprint" negate="true">
-            <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s'.[$ware.id, $ware.name]"/>
-          </do_if>
-        </do_for_each>
- -->        <add_blueprints wares="$wares"/>
+        <add_player_choice text="{1001,9913}" section="RMB_choose_kind" comment="choose blueprints"/>
+        <add_player_choice text="{1001,12}" section="RBM_show_status" comment="status"/>
+        <add_player_choice_return text="{1002,20}" position="bottom_right" comment="back"/>
       </actions>
     </cue>
   </cues>
