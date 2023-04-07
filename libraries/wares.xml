@@ -15,7 +15,7 @@
       </research>
     </ware>
     <ware id="rbm_consumables_1" name="{1001,8003}: {1001,97}" description="{1001,8003}: {1001,97}" transport="research" volume="1" tags="research" sortorder="102">
-      <price min="1" average="1" max="1" />
+      <price min="1" average="720" max="1300" />
       <research time="600">
         <primary>
           <ware ware="smartchips" amount="3" />
