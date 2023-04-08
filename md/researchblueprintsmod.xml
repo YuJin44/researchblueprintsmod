@@ -53,6 +53,15 @@
           param enum
           1=init
           2=modules
+          3=ships
+          4=equipment
+          5=productionmodules
+          6=buildmodules
+          7=storagemodules
+          8=habitationmodules
+          9=defencemodules
+          10=dockmodules
+          11=other modules
         -->
         <cue name="RBM_choose_blueprints_handler" instantiate="true">
           <conditions>
@@ -62,30 +71,24 @@
             </check_any>
           </conditions>
           <actions>
-            <!-- <add_player_choice_return text="{1002,20}" position="bottom_right" comment="back" returnparam="3"/> -->
-            <do_if value="event.param2 == 1">
+            <do_if value="event.param2 == 1"> <!-- init -->
               <set_value name="$choices" exact="[
                 table[$text={1001,7924}, $choiceparam=2, $baseparam=event.param2],
-                table[$text={1001,6}, $choiceparam=2, $baseparam=event.param2],
-                table[$text={1001,7935}, $choiceparam=2, $baseparam=event.param2],
-                table[$text='a', $choiceparam=2, $baseparam=event.param2],
-                table[$text='b', $choiceparam=2, $baseparam=event.param2],
-                table[$text='c', $choiceparam=2, $baseparam=event.param2],
-                table[$text='d', $choiceparam=2, $baseparam=event.param2],
-                table[$text='e', $choiceparam=2, $baseparam=event.param2],
-                table[$text='f', $choiceparam=2, $baseparam=event.param2],
-                table[$text='g', $choiceparam=2, $baseparam=event.param2],
-                table[$text='h', $choiceparam=2, $baseparam=event.param2],
-                table[$text='i', $choiceparam=2, $baseparam=event.param2],
-                table[$text='j', $choiceparam=2, $baseparam=event.param2],
-                table[$text='k', $choiceparam=2, $baseparam=event.param2],
-                table[$text='l', $choiceparam=2, $baseparam=event.param2],
-                table[$text='m', $choiceparam=2, $baseparam=event.param2]
+                table[$text={1001,6}, $choiceparam=3, $baseparam=event.param2],
+                table[$text={1001,7935}, $choiceparam=4, $baseparam=event.param2]
                 ]"/> <!-- [modules, ships, equipment]-->
-    <!--           <add_player_choice_sub text="{1001,7924}" section="RBM_choose_blueprints" comment="modules" choiceparam="2" baseparam="event.param2"/>
-              <add_player_choice_sub text="{1001,6}" section="RBM_choose_blueprints" comment="ships"/>
-              <add_player_choice_sub text="{1001,7935}" section="RBM_choose_kind_equipment" comment="equipment"/> -->
             </do_if>
+            <do_elseif value="event.param2 == 2"> <!-- modules -->
+              <set_value name="$choices" exact="[
+                table[$text={1001,2421}, $choiceparam=5, $baseparam=event.param2],
+                table[$text={1001,2439}, $choiceparam=6, $baseparam=event.param2],
+                table[$text={1001,2422}, $choiceparam=7, $baseparam=event.param2],
+                table[$text={1001,2451}, $choiceparam=8, $baseparam=event.param2],
+                table[$text={1001,2424}, $choiceparam=9, $baseparam=event.param2],
+                table[$text={1001,2452}, $choiceparam=10, $baseparam=event.param2],
+                table[$text={1001,2453}, $choiceparam=11, $baseparam=event.param2]
+                ]"/> <!-- production, build, storage, habitation, def, dock, other -->
+            </do_elseif>
             <signal_cue_instantly cue="RBM_fill_menu_handler"/>
           </actions>
         </cue>
