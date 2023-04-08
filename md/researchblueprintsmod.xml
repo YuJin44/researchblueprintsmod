@@ -1,48 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mdscript name="ResearchBlueprintsMod" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="md.xsd">
   <cues>
-    <cue name="DiablogOptions" instantiate="true">
-      <conditions>
-        <event_conversation_started conversation="default" actor="md.$PersistentCharacters.$BosoTa"/>
-      </conditions>
+    <cue name="Main">
       <actions>
-        <do_if value="@md.ExtendedConversationMenu.Main.exists">
-          <set_value name="md.ExtendedConversationMenu.Main.$convOptions.$researchBlueprintsMod" exact="table[ $signalCue = RBM_Main, $params = [] ]"/>
-        </do_if>
-        <do_else>
-          <signal_cue_instantly cue="RBM_Main"/>
-        </do_else>
+        <set_value name="$choices" exact="[]"/>
       </actions>
-    </cue>
-    <cue name="RBM_Main" instantiate="true">
-      <conditions>
-        <check_any>
-          <event_cue_signalled />
-          <check_all>
-            <event_conversation_returned_to_section section="default" actor="md.$PersistentCharacters.$BosoTa"/>
-            <check_value value="@md.ExtendedConversationMenu.Main.exists" negate="true"/>
-          </check_all>
-        </check_any>
-      </conditions>
-      <actions>
-        <add_player_choice_sub text="'%s %s'.[{1001,97}, {1001,7400}]" section="RBM_Main_Entry" comment="Blueprints research"/>
-        <do_if value="@md.ExtendedConversationMenu.Main.exists" negate="true">
-          <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
-        </do_if>
-      </actions>
-    </cue>
-    <cue name="RBM_Main_Entry_handler" instantiate="true">
-      <conditions>
-        <check_any>
-          <event_conversation_next_section section="RBM_Main_Entry"/>
-          <event_conversation_returned_to_section section="RBM_Main_Entry"/>
-        </check_any>
-      </conditions>
-      <actions>
-        <add_player_choice text="{1001,9913}" section="RMB_choose_kind" comment="choose blueprints"/>
-        <add_player_choice text="{1001,12}" section="RBM_show_status" comment="status"/>
-        <add_player_choice_return text="{1002,20}" position="bottom_right" comment="back"/>
-      </actions>
+      <cues>
+        <cue name="RBM_Start" instantiate="true">
+          <conditions>
+            <event_conversation_started conversation="default" actor="md.$PersistentCharacters.$BosoTa"/>
+          </conditions>
+          <actions>
+            <do_if value="@md.ExtendedConversationMenu.Main.exists">
+              <set_value name="md.ExtendedConversationMenu.Main.$convOptions.$researchBlueprintsMod" exact="table[ $signalCue = RBM_Main, $params = [] ]"/>
+            </do_if>
+            <do_else>
+              <signal_cue_instantly cue="RBM_Main"/>
+            </do_else>
+          </actions>
+        </cue>
+        <cue name="RBM_Main" instantiate="true">
+          <conditions>
+            <check_any>
+              <event_cue_signalled />
+              <check_all>
+                <event_conversation_returned_to_section section="default" actor="md.$PersistentCharacters.$BosoTa"/>
+                <check_value value="@md.ExtendedConversationMenu.Main.exists" negate="true"/>
+              </check_all>
+            </check_any>
+          </conditions>
+          <actions>
+            <do_if value="@md.ExtendedConversationMenu.Main.exists" negate="true">
+              <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
+            </do_if>
+            <add_player_choice_sub text="'%s %s'.[{1001,97}, {1001,7400}]" section="RBM_Main_Entry" comment="Blueprints research"/>
+          </actions>
+        </cue>
+        <cue name="RBM_Main_Entry_handler" instantiate="true">
+          <conditions>
+            <check_any>
+              <event_conversation_next_section section="RBM_Main_Entry"/>
+              <event_conversation_returned_to_section section="RBM_Main_Entry"/>
+            </check_any>
+          </conditions>
+          <actions>
+            <add_player_choice_return text="{1001,2669}" position="bottom_right" comment="back"/>
+            <add_player_choice_sub text="{1001,9913}" section="RBM_choose_blueprints" comment="choose blueprints" choiceparam="1"/>
+            <add_player_choice_sub text="{1001,12}" section="RBM_show_status" comment="status"/>
+          </actions>
+        </cue>
+        <!-- 
+          param enum
+          1=init
+          2=modules
+        -->
+        <cue name="RBM_choose_blueprints_handler" instantiate="true">
+          <conditions>
+            <check_any>
+              <event_conversation_next_section section="RBM_choose_blueprints" />
+              <event_conversation_returned_to_section section="RBM_choose_blueprints"/>
+            </check_any>
+          </conditions>
+          <actions>
+            <!-- <add_player_choice_return text="{1002,20}" position="bottom_right" comment="back" returnparam="3"/> -->
+            <do_if value="event.param2 == 1">
+              <set_value name="$choices" exact="[
+                table[$text={1001,7924}, $choiceparam=2, $baseparam=event.param2],
+                table[$text={1001,6}, $choiceparam=2, $baseparam=event.param2],
+                table[$text={1001,7935}, $choiceparam=2, $baseparam=event.param2],
+                table[$text='a', $choiceparam=2, $baseparam=event.param2],
+                table[$text='b', $choiceparam=2, $baseparam=event.param2],
+                table[$text='c', $choiceparam=2, $baseparam=event.param2],
+                table[$text='d', $choiceparam=2, $baseparam=event.param2],
+                table[$text='e', $choiceparam=2, $baseparam=event.param2],
+                table[$text='f', $choiceparam=2, $baseparam=event.param2],
+                table[$text='g', $choiceparam=2, $baseparam=event.param2],
+                table[$text='h', $choiceparam=2, $baseparam=event.param2],
+                table[$text='i', $choiceparam=2, $baseparam=event.param2],
+                table[$text='j', $choiceparam=2, $baseparam=event.param2],
+                table[$text='k', $choiceparam=2, $baseparam=event.param2],
+                table[$text='l', $choiceparam=2, $baseparam=event.param2],
+                table[$text='m', $choiceparam=2, $baseparam=event.param2]
+                ]"/> <!-- [modules, ships, equipment]-->
+    <!--           <add_player_choice_sub text="{1001,7924}" section="RBM_choose_blueprints" comment="modules" choiceparam="2" baseparam="event.param2"/>
+              <add_player_choice_sub text="{1001,6}" section="RBM_choose_blueprints" comment="ships"/>
+              <add_player_choice_sub text="{1001,7935}" section="RBM_choose_kind_equipment" comment="equipment"/> -->
+            </do_if>
+            <signal_cue_instantly cue="RBM_fill_menu_handler"/>
+          </actions>
+        </cue>
+        <cue name="RBM_fill_menu_handler" instantiate="true">
+          <conditions>
+            <check_any>
+              <event_cue_signalled />
+              <event_conversation_next_section section="RBM_fill_menu" />
+            </check_any>
+          </conditions>
+          <actions>
+            <do_if value="event.param2=='next'">
+              <set_value name="$page" operation="add"/>
+            </do_if>
+            <do_elseif value="event.param2=='prev'">
+              <set_value name="$page" operation="subtract"/>
+            </do_elseif>
+            <do_else>
+              <set_value name="$page" exact="0"/>
+            </do_else>
+            <do_if value="@$page" negate="true">
+              <add_player_choice_return text="{1001,2669}" position="bottom_right" comment="to previous menu back"/>
+            </do_if>
+            <do_else>
+              <add_player_choice text="{1002, 20}" section="RBM_fill_menu" position="bottom_right" choiceparam="'prev'" comment="(back)"/>
+            </do_else>
+            <do_if value="$choices.count-$page*4 le 5">
+              <do_for_each in="$choices" name="$choice">
+                <!-- <show_notification text="'a '+$choice.$section" /> -->
+                <add_player_choice_sub text="$choice.$text" section="RBM_choose_blueprints" choiceparam="$choice.$choiceparam" baseparam="$choice.$baseparam"/>
+              </do_for_each>
+            </do_if>
+            <do_else>
+              <add_player_choice text="{1002, 12025}" section="RBM_fill_menu" position="right" choiceparam="'next'" comment="more ..."/>
+              <do_all exact="4" counter="$z">
+                <set_value name="$choice" exact="$choices.{$z+$page*4}"/>
+                <add_player_choice_sub text="$choice.$text" section="RBM_choose_blueprints" choiceparam="$choice.$choiceparam" baseparam="$choice.$baseparam"/>
+              </do_all>
+            </do_else>
+          </actions>
+        </cue>
+      </cues>
     </cue>
   </cues>
 </mdscript>
