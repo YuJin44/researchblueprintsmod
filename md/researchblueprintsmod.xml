@@ -106,25 +106,23 @@
             <do_else>
               <set_value name="$page" exact="0"/>
             </do_else>
-            <do_if value="@$page" negate="true">
+            <do_if value="$page" negate="true">
               <add_player_choice_return text="{1001,2669}" position="bottom_right" comment="to previous menu back"/>
             </do_if>
             <do_else>
               <add_player_choice text="{1002, 20}" section="RBM_fill_menu" position="bottom_right" choiceparam="'prev'" comment="(back)"/>
             </do_else>
-            <do_if value="$choices.count-$page*4 le 5">
-              <do_for_each in="$choices" name="$choice">
-                <!-- <show_notification text="'a '+$choice.$section" /> -->
-                <add_player_choice_sub text="$choice.$text" section="RBM_choose_blueprints" choiceparam="$choice.$choiceparam" baseparam="$choice.$baseparam"/>
-              </do_for_each>
+            <do_if value="$choices.count-$page*4 gt 5">
+              <add_player_choice text="{1002, 12025}" section="RBM_fill_menu" position="right" choiceparam="'next'" comment="more ..."/>
+              <set_value name="$amount" exact="4"/>
             </do_if>
             <do_else>
-              <add_player_choice text="{1002, 12025}" section="RBM_fill_menu" position="right" choiceparam="'next'" comment="more ..."/>
-              <do_all exact="4" counter="$z">
-                <set_value name="$choice" exact="$choices.{$z+$page*4}"/>
-                <add_player_choice_sub text="$choice.$text" section="RBM_choose_blueprints" choiceparam="$choice.$choiceparam" baseparam="$choice.$baseparam"/>
-              </do_all>
+              <set_value name="$amount" exact="$choices.count-$page*4"/>
             </do_else>
+            <do_all exact="$amount" counter="$z">
+              <set_value name="$choice" exact="$choices.{$z+$page*4}"/>
+              <add_player_choice_sub text="$choice.$text" section="RBM_choose_blueprints" choiceparam="$choice.$choiceparam" baseparam="$choice.$baseparam"/>
+            </do_all>
           </actions>
         </cue>
       </cues>
