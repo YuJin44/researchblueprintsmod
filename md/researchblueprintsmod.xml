@@ -83,6 +83,11 @@
             <check_any>
               <event_conversation_next_section section="RBM_choose_blueprints" />
               <event_conversation_returned_to_section section="RBM_choose_blueprints"/>
+              <!-- need to add this, since choosing something from 2nd (or further) page of RBM_fill_menu and then pressing return (6)
+                   returns to RBM_fill_menu, bacause the second page is called with a player choice instead of cue signalling, thus
+                   the caller of subconversation is RBM_fill_menu so returning from that subconversation returns to RBM_fill_menu
+                   so we catch that return event in this cue-->
+              <event_conversation_returned_to_section section="RBM_fill_menu"/>
             </check_any>
           </conditions>
           <actions>
@@ -150,10 +155,10 @@
                   <set_value name="$kind" exact="[class.dockarea, class.pier]"/>
                   <set_value name="$other" exact="false"/>
                 </do_elseif>
-                <do_if value="event.param2 == 11">
+                <do_else> <!-- event.param2 == 11 -->
                   <set_value name="$kind" exact="[class.production, class.buildmodule, class.storage, class.habitation, class.defencemodule, class.dockarea, class.pier]"/>
                   <set_value name="$other" exact="true"/>
-                </do_if>
+                </do_else>
               </do_if>
               <do_all exact="$wares.count" counter="$z" reverse="true">
                 <do_if value="$wares.{$z}.hastag.missiononly or $wares.{$z}.hastag.noblueprint or ($wares.{$z}.objectmacro.isclass.{$kind} == $other)">
