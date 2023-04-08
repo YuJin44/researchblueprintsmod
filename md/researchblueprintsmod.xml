@@ -4,7 +4,9 @@
     <cue name="Main">
       <actions>
         <set_value name="$choices" exact="[]"/>
-        <set_value name="$researchInProgress"/>
+        <set_value name="$researchInProgress" exact="0"/>
+        <set_value name="$researchActive" exact="false"/>
+        <set_value name="$currentRbm" />
         <set_value name="$categories" exact="[
           [],
           [ware.rbm_module_1, ware.rbm_module_2, ware.rbm_module_3, ware.rbm_module_4, ware.rbm_module_5, ware.rbm_module_6, ware.rbm_module_7],
@@ -71,17 +73,20 @@
           </conditions>
           <actions>
             <add_player_choice_return text="{1001,2669}" position="bottom_right" comment="back"/>
-            <add_player_choice_sub text="{1001,9913}" section="RBM_choose_blueprints" comment="choose blueprints" choiceparam="1"/>
-            <add_player_choice_sub text="{1001,12}" section="RBM_show_status" comment="status"/>
-          </actions>
-        </cue>
-        <cue name="RBM_show_status_handler" instantiate="true">
-          <conditions>
-            <event_conversation_next_section section="RBM_show_status" />
-          </conditions>
-          <actions>
-            <show_notification text="'status: %s'.[$researchInProgress]" />
-            <!-- <show_notification text="'status2: %s'.[[[],ware.energycells,[],$researchInProgress]]" /> -->
+            <do_if value="@$researchInProgress">
+              <add_player_choice_sub text="{1001,9913}" section="RBM_choose_blueprints" comment="choose blueprints" choiceparam="1" selectable="false"/>
+              <add_player_choice_sub text="{1001,12}" section="RBM_show_status" comment="status"/>
+            </do_if>
+            <do_else>
+              <add_player_choice_sub text="{1001,9913}" section="RBM_choose_blueprints" comment="choose blueprints" choiceparam="1"/>
+              <add_player_choice_sub text="{1001,12}" section="RBM_show_status" comment="status" selectable="false"/>
+            </do_else>
+            <do_if value="not @$researchActive and @$researchInProgress">
+              <add_player_choice_sub text="{1001,7410}" section="RBM_cancel_progress" comment="cancel research"/>
+            </do_if>
+            <do_else>
+              <add_player_choice_sub text="{1001,7410}" section="RBM_cancel_progress" comment="cancel research" selectable="false"/>
+            </do_else>
           </actions>
         </cue>
         <!-- 
@@ -314,8 +319,59 @@
             <do_for_each in="$categories.{event.param.$category}" name="$rbmWare">
               <do_if value="$researchInProgress.averageprice ge $rbmWare.minprice and $researchInProgress.averageprice le $rbmWare.maxprice">
                 <add_encyclopedia_entry type="researchables" item="$rbmWare.id"/>
+                <set_value name="$currentRbm" exact="$rbmWare"/>
               </do_if>
             </do_for_each>
+          </actions>
+        </cue>
+        <cue name="RBM_show_status_handler" instantiate="true">
+          <conditions>
+            <event_conversation_next_section section="RBM_show_status" />
+          </conditions>
+          <actions>
+            <show_notification text="'%s: %s'.[{1004, 71}, $researchInProgress]" />
+          </actions>
+        </cue>
+        <cue name="RBM_lock_cancelling_handler" instantiate="true">
+          <conditions>
+            <check_any>
+              <event_player_production_started research="true" ware="$currentRbm"/>
+            </check_any>
+          </conditions>
+          <actions>
+            <set_value name="$researchActive" exact="true"/>
+          </actions>
+        </cue>
+        <cue name="RBM_unlock_cancelling_handler" instantiate="true">
+          <conditions>
+            <check_any>
+              <event_player_production_cancelled research="true"/>
+            </check_any>
+          </conditions>
+          <actions>
+            <set_value name="$researchActive" exact="false"/>
+          </actions>
+        </cue>
+        <cue name="RBM_cancel_progress_handler" instantiate="true">
+          <conditions>
+            <event_conversation_next_section section="RBM_cancel_progress" />
+          </conditions>
+          <actions>
+            <remove_encyclopedia_entry type="researchables" item="$currentRbm.id"/>
+            <remove_value name="$researchInProgress"/>
+            <remove_value name="$currentRbm"/>
+          </actions>
+        </cue>
+        <cue name="RBM_research_finished_handler" instantiate="true">
+          <conditions>
+            <event_player_production_finished ware="$currentRbm" research="true"/>
+          </conditions>
+          <actions>
+            <add_blueprints wares="$researchInProgress"/>
+            <remove_value name="$researchInProgress"/>
+            <set_value name="$researchActive" exact="false"/>
+            <remove_encyclopedia_entry type="researchables" item="$currentRbm.id"/>
+            <remove_value name="$currentRbm"/>
           </actions>
         </cue>
       </cues>
