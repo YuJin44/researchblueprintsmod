@@ -4,6 +4,32 @@
     <cue name="Main">
       <actions>
         <set_value name="$choices" exact="[]"/>
+        <set_value name="$researchInProgress"/>
+        <set_value name="$categories" exact="[
+          [],
+          [ware.rbm_module_1, ware.rbm_module_2, ware.rbm_module_3, ware.rbm_module_4, ware.rbm_module_5, ware.rbm_module_6, ware.rbm_module_7],
+          [ware.rbm_ship_1, ware.rbm_ship_2, ware.rbm_ship_3, ware.rbm_ship_4, ware.rbm_ship_5, ware.rbm_ship_6, ware.rbm_ship_7],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [ware.rbm_weapon_1, ware.rbm_weapon_2, ware.rbm_weapon_3, ware.rbm_weapon_4, ware.rbm_weapon_5],
+          [],
+          [ware.rbm_turret_1, ware.rbm_turret_2, ware.rbm_turret_3],
+          [],
+          [ware.rbm_engine_1, ware.rbm_engine_2, ware.rbm_engine_3, ware.rbm_engine_4, ware.rbm_engine_5, ware.rbm_engine_6, ware.rbm_engine_7, ware.rbm_engine_8],
+          [],
+          [ware.rbm_shield_1, ware.rbm_shield_2, ware.rbm_shield_3],
+          [ware.rbm_consumable_1, ware.rbm_consumable_2, ware.rbm_consumable_3, ware.rbm_consumable_4]
+          ]"/>
       </actions>
       <cues>
         <cue name="RBM_Start" instantiate="true">
@@ -49,6 +75,15 @@
             <add_player_choice_sub text="{1001,12}" section="RBM_show_status" comment="status"/>
           </actions>
         </cue>
+        <cue name="RBM_show_status_handler" instantiate="true">
+          <conditions>
+            <event_conversation_next_section section="RBM_show_status" />
+          </conditions>
+          <actions>
+            <show_notification text="'status: %s'.[$researchInProgress]" />
+            <!-- <show_notification text="'status2: %s'.[[[],ware.energycells,[],$researchInProgress]]" /> -->
+          </actions>
+        </cue>
         <!-- 
           param enum
           1=init
@@ -92,129 +127,146 @@
             </check_any>
           </conditions>
           <actions>
-            <do_if value="event.param2 == 1"> <!-- init -->
-              <set_value name="$choices" exact="[
-                table[$text={1001,7924}, $choiceparam=2, $baseparam=event.param2],
-                table[$text={1001,6}, $choiceparam=3, $baseparam=event.param2],
-                table[$text={1001,7935}, $choiceparam=4, $baseparam=event.param2]
-                ]"/> <!-- [modules, ships, equipment]-->
-            </do_if>
-            <do_elseif value="event.param2 == 2"> <!-- modules -->
-              <set_value name="$choices" exact="[
-                table[$text={1001,2421}, $choiceparam=5, $baseparam=event.param2],
-                table[$text={1001,2439}, $choiceparam=6, $baseparam=event.param2],
-                table[$text={1001,2422}, $choiceparam=7, $baseparam=event.param2],
-                table[$text={1001,2451}, $choiceparam=8, $baseparam=event.param2],
-                table[$text={1001,2424}, $choiceparam=9, $baseparam=event.param2],
-                table[$text={1001,2452}, $choiceparam=10, $baseparam=event.param2],
-                table[$text={1001,2453}, $choiceparam=11, $baseparam=event.param2]
-                ]"/> <!-- production, build, storage, habitation, def, dock, other -->
-            </do_elseif>
-            <do_elseif value="event.param2 == 3"> <!-- ships -->
-              <set_value name="$choices" exact="[
-                table[$text={1001,11003}, $choiceparam=12, $baseparam=event.param2],
-                table[$text={1001,11002}, $choiceparam=13, $baseparam=event.param2],
-                table[$text={1001,11001}, $choiceparam=14, $baseparam=event.param2],
-                table[$text={1001,11000}, $choiceparam=15, $baseparam=event.param2]
-                ]"/> <!-- XL, L, M, S -->
-            </do_elseif>
-            <do_elseif value="event.param2 == 4"> <!-- equipment -->
-              <set_value name="$choices" exact="[
-                table[$text={1001,1105}, $choiceparam=16, $baseparam=event.param2],
-                table[$text={1001,1313}, $choiceparam=17, $baseparam=event.param2],
-                table[$text={1001,1319}, $choiceparam=18, $baseparam=event.param2],
-                table[$text={1001,9031}, $choiceparam=19, $baseparam=event.param2],
-                table[$text={1001,1103}, $choiceparam=20, $baseparam=event.param2],
-                table[$text={1001,8001}, $choiceparam=21, $baseparam=event.param2],
-                table[$text={1001,1317}, $choiceparam=22, $baseparam=event.param2],
-                table[$text={1001,8003}, $choiceparam=23, $baseparam=event.param2]
-                ]"/> <!-- weapons, rocketlauncher, turret, rocket-turret, engines, thruster, shield, consumables -->
-            </do_elseif>
-            <do_elseif value="typeof event.param2 == datatype.integer">
-              <set_value name="$other" exact="false"/>
-              <do_if value="event.param2 le 11">
-                <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.module"/>
-                <do_if value="event.param2 == 5">
-                  <set_value name="$kind" exact="class.production"/>
-                </do_if>
-                <do_elseif value="event.param2 == 6">
-                  <set_value name="$kind" exact="class.buildmodule"/>
-                </do_elseif>
-                <do_elseif value="event.param2 == 7">
-                  <set_value name="$kind" exact="class.storage"/>
-                </do_elseif>
-                <do_elseif value="event.param2 == 8">
-                  <set_value name="$kind" exact="class.habitation"/>
-                </do_elseif>
-                <do_elseif value="event.param2 == 9">
-                  <set_value name="$kind" exact="class.defencemodule"/>
-                </do_elseif>
-                <do_elseif value="event.param2 == 10">
-                  <set_value name="$kind" exact="[class.dockarea, class.pier]"/>
-                </do_elseif>
-                <do_else> <!-- event.param2 == 11 -->
-                  <set_value name="$kind" exact="[class.production, class.buildmodule, class.storage, class.habitation, class.defencemodule, class.dockarea, class.pier]"/>
-                  <set_value name="$other" exact="true"/>
-                </do_else>
+            <do_if value="typeof event.param2 == datatype.integer">
+              <do_if value="event.param2 == 1"> <!-- init -->
+                <set_value name="$choices" exact="[
+                  table[$text={1001,7924}, $choiceparam=2, $baseparam=event.param2],
+                  table[$text={1001,6}, $choiceparam=3, $baseparam=event.param2],
+                  table[$text={1001,7935}, $choiceparam=4, $baseparam=event.param2]
+                  ]"/> <!-- [modules, ships, equipment]-->
               </do_if>
-              <do_elseif value="event.param2 le 15">
-                <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.ship"/>
-                <do_if value="event.param2 == 12">
-                  <set_value name="$kind" exact="class.ship_xl"/>
+              <do_elseif value="event.param2 == 2"> <!-- modules -->
+                <set_value name="$choices" exact="[
+                  table[$text={1001,2421}, $choiceparam=5, $baseparam=event.param2],
+                  table[$text={1001,2439}, $choiceparam=6, $baseparam=event.param2],
+                  table[$text={1001,2422}, $choiceparam=7, $baseparam=event.param2],
+                  table[$text={1001,2451}, $choiceparam=8, $baseparam=event.param2],
+                  table[$text={1001,2424}, $choiceparam=9, $baseparam=event.param2],
+                  table[$text={1001,2452}, $choiceparam=10, $baseparam=event.param2],
+                  table[$text={1001,2453}, $choiceparam=11, $baseparam=event.param2]
+                  ]"/> <!-- production, build, storage, habitation, def, dock, other -->
+              </do_elseif>
+              <do_elseif value="event.param2 == 3"> <!-- ships -->
+                <set_value name="$choices" exact="[
+                  table[$text={1001,11003}, $choiceparam=12, $baseparam=event.param2],
+                  table[$text={1001,11002}, $choiceparam=13, $baseparam=event.param2],
+                  table[$text={1001,11001}, $choiceparam=14, $baseparam=event.param2],
+                  table[$text={1001,11000}, $choiceparam=15, $baseparam=event.param2]
+                  ]"/> <!-- XL, L, M, S -->
+              </do_elseif>
+              <do_elseif value="event.param2 == 4"> <!-- equipment -->
+                <set_value name="$choices" exact="[
+                  table[$text={1001,1105}, $choiceparam=16, $baseparam=event.param2],
+                  table[$text={1001,1313}, $choiceparam=17, $baseparam=event.param2],
+                  table[$text={1001,1319}, $choiceparam=18, $baseparam=event.param2],
+                  table[$text={1001,9031}, $choiceparam=19, $baseparam=event.param2],
+                  table[$text={1001,1103}, $choiceparam=20, $baseparam=event.param2],
+                  table[$text={1001,8001}, $choiceparam=21, $baseparam=event.param2],
+                  table[$text={1001,1317}, $choiceparam=22, $baseparam=event.param2],
+                  table[$text={1001,8003}, $choiceparam=23, $baseparam=event.param2]
+                  ]"/> <!-- weapons, rocketlauncher, turret, rocket-turret, engines, thruster, shield, consumables -->
+              </do_elseif>
+              <do_else>
+                <set_value name="$other" exact="false"/>
+                <do_if value="event.param2 le 11">
+                  <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.module"/>
+                  <do_if value="event.param2 == 5">
+                    <set_value name="$kind" exact="class.production"/>
+                  </do_if>
+                  <do_elseif value="event.param2 == 6">
+                    <set_value name="$kind" exact="class.buildmodule"/>
+                  </do_elseif>
+                  <do_elseif value="event.param2 == 7">
+                    <set_value name="$kind" exact="class.storage"/>
+                  </do_elseif>
+                  <do_elseif value="event.param2 == 8">
+                    <set_value name="$kind" exact="class.habitation"/>
+                  </do_elseif>
+                  <do_elseif value="event.param2 == 9">
+                    <set_value name="$kind" exact="class.defencemodule"/>
+                  </do_elseif>
+                  <do_elseif value="event.param2 == 10">
+                    <set_value name="$kind" exact="[class.dockarea, class.pier]"/>
+                  </do_elseif>
+                  <do_else> <!-- event.param2 == 11 -->
+                    <set_value name="$kind" exact="[class.production, class.buildmodule, class.storage, class.habitation, class.defencemodule, class.dockarea, class.pier]"/>
+                    <set_value name="$other" exact="true"/>
+                  </do_else>
+                  <set_value name="$category" exact="2"/>
                 </do_if>
-                <do_elseif value="event.param2 == 13">
-                  <set_value name="$kind" exact="class.ship_l"/>
+                <do_elseif value="event.param2 le 15">
+                  <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.ship"/>
+                  <do_if value="event.param2 == 12">
+                    <set_value name="$kind" exact="class.ship_xl"/>
+                  </do_if>
+                  <do_elseif value="event.param2 == 13">
+                    <set_value name="$kind" exact="class.ship_l"/>
+                  </do_elseif>
+                  <do_elseif value="event.param2 == 14">
+                    <set_value name="$kind" exact="class.ship_m"/>
+                  </do_elseif>
+                  <do_else> <!-- event.param2 == 15 -->
+                    <set_value name="$kind" exact="class.ship_s"/>
+                  </do_else>
+                  <set_value name="$category" exact="3"/>
                 </do_elseif>
-                <do_elseif value="event.param2 == 14">
-                  <set_value name="$kind" exact="class.ship_m"/>
+                <do_elseif value="event.param2 le 17">
+                  <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.weapon"/>
+                  <do_if value="event.param2 == 16">
+                    <set_value name="$kind" exact="class.weapon"/>
+                  </do_if>
+                  <do_else> <!-- event.param2 == 17-->
+                    <set_value name="$kind" exact="class.missilelauncher"/>
+                  </do_else>
+                  <set_value name="$category" exact="16"/>
                 </do_elseif>
-                <do_else> <!-- event.param2 == 15 -->
-                  <set_value name="$kind" exact="class.ship_s"/>
+                <do_elseif value="event.param2 le 19">
+                  <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.turret"/>
+                  <do_if value="event.param2 == 18">
+                    <set_value name="$kind" exact="class.turret"/>
+                  </do_if>
+                  <do_else> <!-- event.param2 == 19-->
+                    <set_value name="$kind" exact="class.missileturret"/>
+                  </do_else>
+                  <set_value name="$category" exact="18"/>
+                </do_elseif>
+                <do_elseif value="event.param2 == 20">
+                  <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.engine"/>
+                  <set_value name="$kind" exact="class.engine"/>
+                  <set_value name="$category" exact="20"/>
+                </do_elseif>
+                <do_elseif value="event.param2 == 21">
+                  <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.thruster"/>
+                  <set_value name="$kind" exact="class.engine"/>
+                  <set_value name="$category" exact="20"/>
+                </do_elseif>
+                <do_elseif value="event.param2 == 22">
+                  <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.shield"/>
+                  <set_value name="$kind" exact="class.shieldgenerator"/>
+                  <set_value name="$category" exact="22"/>
+                </do_elseif>
+                <do_else> <!-- event.param2 == 23 -->
+                  <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.equipment"/>
+                  <set_value name="$kind" exact="[class.shieldgenerator, class.engine, class.turret, class.missileturret, class.weapon, class.missilelauncher]"/>
+                  <set_value name="$other" exact="true"/>
+                  <set_value name="$category" exact="23"/>
                 </do_else>
-              </do_elseif>
-              <do_elseif value="event.param2 le 17">
-                <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.weapon"/>
-                <do_if value="event.param2 == 16">
-                  <set_value name="$kind" exact="class.weapon"/>
-                </do_if>
-                <do_else> <!-- event.param2 == 17-->
-                  <set_value name="$kind" exact="class.missilelauncher"/>
-                </do_else>
-              </do_elseif>
-              <do_elseif value="event.param2 le 19">
-                <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.turret"/>
-                <do_if value="event.param2 == 18">
-                  <set_value name="$kind" exact="class.turret"/>
-                </do_if>
-                <do_else> <!-- event.param2 == 19-->
-                  <set_value name="$kind" exact="class.missileturret"/>
-                </do_else>
-              </do_elseif>
-              <do_elseif value="event.param2 == 20">
-                <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.engine"/>
-                <set_value name="$kind" exact="class.engine"/>
-              </do_elseif>
-              <do_elseif value="event.param2 == 21">
-                <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.thruster"/>
-                <set_value name="$kind" exact="class.engine"/>
-              </do_elseif>
-              <do_elseif value="event.param2 == 22">
-                <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.shield"/>
-                <set_value name="$kind" exact="class.shieldgenerator"/>
-              </do_elseif>
-              <do_else> <!-- event.param2 == 23 -->
-                <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.equipment"/>
-                <set_value name="$kind" exact="[class.shieldgenerator, class.engine, class.turret, class.missileturret, class.weapon, class.missilelauncher]"/>
-                <set_value name="$other" exact="true"/>
+                <set_value name="$choices" exact="[]"/>
+                <do_for_each in="$wares" name="$ware">
+                  <do_if negate="true" value="player.blueprints.{$ware}.any.exists or $ware.hastag.missiononly or $ware.hastag.noblueprint or $ware.hastag.noplayerbuild or $ware.hastag.software or ($ware.objectmacro.isclass.{$kind} == $other)">
+                    <append_to_list name="$choices" exact="table[$text=$ware.name, $choiceparam=table[$ware=$ware, $category=$category], $baseparam=event.param2]" />
+                  </do_if>
+                </do_for_each>
+                <remove_value name="$other" />
+                <remove_value name="$kind" />
+                <remove_value name="$wares" />
+                <remove_value name="$category" />
               </do_else>
-              <set_value name="$choices" exact="[]"/>
-              <do_for_each in="$wares" name="$ware">
-                <do_if negate="true" value="player.blueprints.{$ware}.any.exists or $ware.hastag.missiononly or $ware.hastag.noblueprint or $ware.hastag.noplayerbuild or $ware.hastag.software or ($ware.objectmacro.isclass.{$kind} == $other)">
-                  <append_to_list name="$choices" exact="table[$text=$ware.name, $choiceparam=$ware, $baseparam=event.param2]" />
-                </do_if>
-              </do_for_each>
-            </do_elseif>
-            <signal_cue_instantly cue="RBM_fill_menu_handler"/>
+              <signal_cue_instantly cue="RBM_fill_menu_handler"/>
+            </do_if>
+            <do_else> <!-- chosen a ware for blueprint research -->
+              <signal_cue_instantly cue="RBM_research_start_handler" param="event.param2"/>
+            </do_else>
           </actions>
         </cue>
         <cue name="RBM_fill_menu_handler" instantiate="true">
@@ -251,6 +303,19 @@
               <set_value name="$choice" exact="$choices.{$z+$page*4}"/>
               <add_player_choice_sub text="$choice.$text" section="RBM_choose_blueprints" choiceparam="$choice.$choiceparam" baseparam="$choice.$baseparam"/>
             </do_all>
+          </actions>
+        </cue>
+        <cue name="RBM_research_start_handler" instantiate="true">
+          <conditions>
+            <event_cue_signalled />
+          </conditions>
+          <actions>
+            <set_value name="$researchInProgress" exact="event.param.$ware"/>
+            <do_for_each in="$categories.{event.param.$category}" name="$rbmWare">
+              <do_if value="$researchInProgress.averageprice ge $rbmWare.minprice and $researchInProgress.averageprice le $rbmWare.maxprice">
+                <add_encyclopedia_entry type="researchables" item="$rbmWare.id"/>
+              </do_if>
+            </do_for_each>
           </actions>
         </cue>
       </cues>
