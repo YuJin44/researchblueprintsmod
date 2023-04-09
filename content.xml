@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<content id="researchblueprintsmod" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language" version="100"></content>
+<content id="researchblueprintsmod" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language" version="100">
+    <text language="7"  name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="33" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="34" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="39" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="44" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="49" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="55" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="81" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="82" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="86" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+    <text language="88" name="Research Blueprints Mod" description="Research Blueprints Mod" author="Language"/>
+</content>

@@ -320,6 +320,7 @@
               <do_if value="$researchInProgress.averageprice ge $rbmWare.minprice and $researchInProgress.averageprice le $rbmWare.maxprice">
                 <add_encyclopedia_entry type="researchables" item="$rbmWare.id"/>
                 <set_value name="$currentRbm" exact="$rbmWare"/>
+                <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7407}, $researchInProgress]"/>
               </do_if>
             </do_for_each>
           </actions>
@@ -357,6 +358,7 @@
             <event_conversation_next_section section="RBM_cancel_progress" />
           </conditions>
           <actions>
+            <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7410}, $researchInProgress]"/>
             <remove_encyclopedia_entry type="researchables" item="$currentRbm.id"/>
             <remove_value name="$researchInProgress"/>
             <remove_value name="$currentRbm"/>
@@ -367,9 +369,11 @@
             <event_player_production_finished ware="$currentRbm" research="true"/>
           </conditions>
           <actions>
+            <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7408}, $researchInProgress]"/>
             <add_blueprints wares="$researchInProgress"/>
             <remove_value name="$researchInProgress"/>
             <set_value name="$researchActive" exact="false"/>
+            <remove_research ware="$currentRbm"/>
             <remove_encyclopedia_entry type="researchables" item="$currentRbm.id"/>
             <remove_value name="$currentRbm"/>
           </actions>
