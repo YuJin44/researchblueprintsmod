@@ -321,6 +321,7 @@
                 <add_encyclopedia_entry type="researchables" item="$rbmWare.id"/>
                 <set_value name="$currentRbm" exact="$rbmWare"/>
                 <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7407}, $researchInProgress]"/>
+                <break />
               </do_if>
             </do_for_each>
           </actions>
