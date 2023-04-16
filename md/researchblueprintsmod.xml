@@ -36,7 +36,11 @@
       <cues>
         <cue name="RBM_Start" instantiate="true">
           <conditions>
-            <event_conversation_started conversation="default" actor="md.$PersistentCharacters.$BosoTa"/>
+            <check_any>
+              <event_conversation_started conversation="default" actor="md.$PersistentCharacters.$BosoTa"/>
+              <event_conversation_returned_to_section section="default" actor="md.$PersistentCharacters.$BosoTa"/>
+            </check_any>
+            <check_value value="@player.entity.$x4ep1_hq_research_unlocked"/>
           </conditions>
           <actions>
             <do_if value="@md.ExtendedConversationMenu.Main.exists">
@@ -51,16 +55,10 @@
           <conditions>
             <check_any>
               <event_cue_signalled />
-              <check_all>
-                <event_conversation_returned_to_section section="default" actor="md.$PersistentCharacters.$BosoTa"/>
-                <check_value value="@md.ExtendedConversationMenu.Main.exists" negate="true"/>
-              </check_all>
             </check_any>
           </conditions>
           <actions>
-            <do_if value="@md.ExtendedConversationMenu.Main.exists" negate="true">
-              <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
-            </do_if>
+            <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
             <add_player_choice_sub text="'%s %s'.[{1001,97}, {1001,7400}]" section="RBM_Main_Entry" comment="Blueprints research"/>
           </actions>
         </cue>
