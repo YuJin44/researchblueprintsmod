@@ -58,7 +58,9 @@
             </check_any>
           </conditions>
           <actions>
-            <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
+            <do_if value="@md.ExtendedConversationMenu.Main.exists" negate="true">
+              <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
+            </do_if>
             <add_player_choice_sub text="'%s %s'.[{1001,97}, {1001,7400}]" section="RBM_Main_Entry" comment="Blueprints research"/>
           </actions>
         </cue>
@@ -313,9 +315,9 @@
             <event_cue_signalled />
           </conditions>
           <actions>
-            <set_value name="$researchInProgress" exact="event.param.$ware"/>
             <do_for_each in="$categories.{event.param.$category}" name="$rbmWare">
               <do_if value="$researchInProgress.averageprice ge $rbmWare.minprice and $researchInProgress.averageprice le $rbmWare.maxprice">
+                <set_value name="$researchInProgress" exact="event.param.$ware"/>
                 <add_encyclopedia_entry type="researchables" item="$rbmWare.id"/>
                 <set_value name="$currentRbm" exact="$rbmWare"/>
                 <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7407}, $researchInProgress]"/>
