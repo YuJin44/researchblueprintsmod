@@ -47,6 +47,7 @@
               <set_value name="md.ExtendedConversationMenu.Main.$convOptions.$researchBlueprintsMod" exact="table[ $signalCue = RBM_Main, $params = [] ]"/>
             </do_if>
             <do_else>
+              <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
               <signal_cue_instantly cue="RBM_Main"/>
             </do_else>
           </actions>
@@ -58,9 +59,6 @@
             </check_any>
           </conditions>
           <actions>
-            <do_if value="@md.ExtendedConversationMenu.Main.exists" negate="true">
-              <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
-            </do_if>
             <add_player_choice_sub text="'%s %s'.[{1001,97}, {1001,7400}]" section="RBM_Main_Entry" comment="Blueprints research"/>
           </actions>
         </cue>
