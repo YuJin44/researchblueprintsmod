@@ -212,7 +212,7 @@
       </research>
     </ware>
     <ware id="rbm_shield_3" name="{1001,97}: {1001,2}" description="{1001,97}: {1001,2}" transport="research" volume="1" tags="research" sortorder="102">
-      <price min="1" average="12260" max="35100" />
+      <price min="148001" average="238000" max="600000" />
       <research time="900">
         <primary>
           <ware ware="fieldcoils" amount="640" />
