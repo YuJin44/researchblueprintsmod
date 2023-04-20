@@ -335,10 +335,6 @@
           </conditions>
           <actions>
             <show_notification text="'%s: %s'.[{1004, 71}, $researchInProgress]" />
-            <get_ware_definition result="$wares" flags="allowplayerblueprint"/>
-            <do_for_each in="$wares" name="$ware">
-              <debug_to_file name="'modules'" directory="'RBM'" text="'%s, %s, %s, %s, %s'.[$ware.id, $ware.objectmacro.class, $ware.resources.table, $ware.tags, $ware.averageprice]"/>
-            </do_for_each>
           </actions>
         </cue>
         <cue name="RBM_lock_cancelling_handler" instantiate="true">
