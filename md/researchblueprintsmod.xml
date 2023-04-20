@@ -323,6 +323,9 @@
                 <break />
               </do_if>
             </do_for_each>
+            <do_if value="@$researchInProgress" negate="true">
+              <write_to_logbook category="upkeep" title="'could not start research for wareID: %s, avprice: %s, class: %s, tags: %s, resources: %s'.[$ware.id, $ware.averageprice, $ware.objectmacro.class, $ware.tags, $ware.resources.table]" />
+            </do_if>
             <remove_value name="$ware" />
           </actions>
         </cue>
