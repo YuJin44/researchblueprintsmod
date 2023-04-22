@@ -191,6 +191,153 @@
         </primary>
       </research>
     </ware>
+    <ware id="rbm_module_ter_1" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="106900" max="346500" />
+      <research time="300">
+        <primary>
+          <ware ware="energycells" amount="30" />
+          <ware ware="computronicsubstrate" amount="5" />
+          <ware ware="siliconcarbide" amount="10" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_ter_2" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="346501" average="586700" max="1687500" />
+      <research time="600">
+        <primary>
+          <ware ware="energycells" amount="180" />
+          <ware ware="computronicsubstrate" amount="30" />
+          <ware ware="siliconcarbide" amount="50" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_ter_3" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1687501" average="2788000" max="8241500" />
+      <research time="900">
+        <primary>
+          <ware ware="energycells" amount="815" />
+          <ware ware="computronicsubstrate" amount="150" />
+          <ware ware="siliconcarbide" amount="220" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_ter_4" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="8241501" average="13695000" max="30975000" />
+      <research time="1200">
+        <primary>
+          <ware ware="energycells" amount="3280" />
+          <ware ware="computronicsubstrate" amount="725" />
+          <ware ware="siliconcarbide" amount="840" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_ter_5" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="30975001" average="48250000" max="74720000" />
+      <research time="1500">
+        <primary>
+          <ware ware="energycells" amount="14700" />
+          <ware ware="computronicsubstrate" amount="2665" />
+          <ware ware="siliconcarbide" amount="3175" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_ter_6" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="74720001" average="101185000" max="157470000" />
+      <research time="2400">
+        <primary>
+          <ware ware="energycells" amount="30550" />
+          <ware ware="computronicsubstrate" amount="5175" />
+          <ware ware="siliconcarbide" amount="6200" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_ter_7" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="157470001" average="213755000" max="350000000" />
+      <research time="3600">
+        <primary>
+          <ware ware="energycells" amount="61200" />
+          <ware ware="computronicsubstrate" amount="11200" />
+          <ware ware="siliconcarbide" amount="12500" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_bor_1" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="106900" max="346500" />
+      <research time="300">
+        <primary>
+          <ware ware="energycells" amount="350" />
+          <ware ware="claytronics" amount="10" />
+          <ware ware="hullparts" amount="80" />
+          <ware ware="water" amount="210" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_bor_2" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="346501" average="586700" max="1687500" />
+      <research time="600">
+        <primary>
+          <ware ware="energycells" amount="2120" />
+          <ware ware="claytronics" amount="65" />
+          <ware ware="hullparts" amount="490" />
+          <ware ware="water" amount="1280" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_bor_3" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1687501" average="2788000" max="8241500" />
+      <research time="900">
+        <primary>
+          <ware ware="energycells" amount="9470" />
+          <ware ware="claytronics" amount="300" />
+          <ware ware="hullparts" amount="2175" />
+          <ware ware="water" amount="5715" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_bor_4" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="8241501" average="13695000" max="30975000" />
+      <research time="1200">
+        <primary>
+          <ware ware="energycells" amount="45800" />
+          <ware ware="claytronics" amount="1500" />
+          <ware ware="hullparts" amount="10500" />
+          <ware ware="water" amount="26700" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_bor_5" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="30975001" average="48250000" max="74720000" />
+      <research time="1500">
+        <primary>
+          <ware ware="energycells" amount="147500" />
+          <ware ware="claytronics" amount="5800" />
+          <ware ware="hullparts" amount="34125" />
+          <ware ware="water" amount="87645" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_bor_6" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="74720001" average="101185000" max="157470000" />
+      <research time="2400">
+        <primary>
+          <ware ware="energycells" amount="294500" />
+          <ware ware="claytronics" amount="12120" />
+          <ware ware="hullparts" amount="785100" />
+          <ware ware="water" amount="179600" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_module_bor_7" name="{1001,97}: {1001,56}" description="{1001,97}: {1001,56}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="157470001" average="213755000" max="350000000" />
+      <research time="3600">
+        <primary>
+          <ware ware="energycells" amount="620500" />
+          <ware ware="claytronics" amount="25140" />
+          <ware ware="hullparts" amount="151840" />
+          <ware ware="water" amount="374500" />
+        </primary>
+      </research>
+    </ware>
     <ware id="rbm_shield_1" name="{1001,97}: {1001,2}" description="{1001,97}: {1001,2}" transport="research" volume="1" tags="research" sortorder="102">
       <price min="1" average="12260" max="35100" />
       <research time="300">
@@ -284,6 +431,146 @@
         </primary>
       </research>
     </ware>
+    <ware id="rbm_ship_ter_1" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="152000" max="238500" />
+      <research time="300">
+        <primary>
+          <ware ware="energycells" amount="280" />
+          <ware ware="computronicsubstrate" amount="35" />
+          <ware ware="metallicmicrolattice" amount="120" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_ter_2" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="238501" average="325000" max="554500" />
+      <research time="500">
+        <primary>
+          <ware ware="energycells" amount="630" />
+          <ware ware="computronicsubstrate" amount="75" />
+          <ware ware="metallicmicrolattice" amount="290" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_ter_3" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="554501" average="784000" max="1420000" />
+      <research time="660">
+        <primary>
+          <ware ware="energycells" amount="1570" />
+          <ware ware="computronicsubstrate" amount="170" />
+          <ware ware="metallicmicrolattice" amount="720" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_ter_4" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1420001" average="2055000" max="3637500" />
+      <research time="800">
+        <primary>
+          <ware ware="energycells" amount="1950" />
+          <ware ware="computronicsubstrate" amount="460" />
+          <ware ware="metallicmicrolattice" amount="845" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_ter_5" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="3637501" average="5222000" max="8434000" />
+      <research time="1000">
+        <primary>
+          <ware ware="energycells" amount="6940" />
+          <ware ware="computronicsubstrate" amount="1170" />
+          <ware ware="metallicmicrolattice" amount="3150" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_ter_6" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="8434001" average="11646000" max="18573000" />
+      <research time="1300">
+        <primary>
+          <ware ware="energycells" amount="10340" />
+          <ware ware="computronicsubstrate" amount="2810" />
+          <ware ware="metallicmicrolattice" amount="4710" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_ter_7" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="18573001" average="25500000" max="70000000" />
+      <research time="1500">
+        <primary>
+          <ware ware="energycells" amount="26040" />
+          <ware ware="computronicsubstrate" amount="4650" />
+          <ware ware="metallicmicrolattice" amount="11860" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_bor_1" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="152000" max="238500" />
+      <research time="300">
+        <primary>
+          <ware ware="hullparts" amount="1200" />
+          <ware ware="energycells" amount="555" />
+          <ware ware="water" amount="360" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_bor_2" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="238501" average="325000" max="554500" />
+      <research time="500">
+        <primary>
+          <ware ware="hullparts" amount="2500" />
+          <ware ware="energycells" amount="1100" />
+          <ware ware="water" amount="1350" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_bor_3" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="554501" average="784000" max="1420000" />
+      <research time="660">
+        <primary>
+          <ware ware="hullparts" amount="6100" />
+          <ware ware="energycells" amount="1540" />
+          <ware ware="water" amount="3190" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_bor_4" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1420001" average="2055000" max="3637500" />
+      <research time="800">
+        <primary>
+          <ware ware="hullparts" amount="15140" />
+          <ware ware="energycells" amount="7810" />
+          <ware ware="water" amount="9800" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_bor_5" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="3637501" average="5222000" max="8434000" />
+      <research time="1000">
+        <primary>
+          <ware ware="hullparts" amount="43180" />
+          <ware ware="energycells" amount="11850" />
+          <ware ware="water" amount="20570" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_bor_6" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="8434001" average="11646000" max="18573000" />
+      <research time="1300">
+        <primary>
+          <ware ware="hullparts" amount="97850" />
+          <ware ware="energycells" amount="26750" />
+          <ware ware="water" amount="43500" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_ship_bor_7" name="{1001,97}: {1001,5}" description="{1001,97}: {1001,5}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="18573001" average="25500000" max="60000000" />
+      <research time="1500">
+        <primary>
+          <ware ware="hullparts" amount="204500" />
+          <ware ware="energycells" amount="49540" />
+          <ware ware="water" amount="78460" />
+        </primary>
+      </research>
+    </ware>
     <ware id="rbm_engine_1" name="{1001,97}: {1001,1103}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
       <price min="1" average="10750" max="33500" />
       <research time="300">
@@ -361,6 +648,93 @@
           <ware ware="engineparts" amount="24000" />
           <ware ware="antimatterconverters" amount="65000" />
           <ware ware="energycells" amount="400" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_equipment_ter_1" name="{1001,97}: {1001,7935}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="1" average="10750" max="33500" />
+      <research time="300">
+        <primary>
+          <ware ware="energycells" amount="875" />
+          <ware ware="siliconcarbide" amount="20" />
+          <ware ware="metallicmicrolattice" amount="270" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_equipment_ter_2" name="{1001,97}: {1001,7935}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="33501" average="56000" max="116000" />
+      <research time="420">
+        <primary>
+          <ware ware="energycells" amount="1100" />
+          <ware ware="computronicsubstrate" amount="17" />
+          <ware ware="siliconcarbide" amount="45" />
+          <ware ware="metallicmicrolattice" amount="410" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_equipment_ter_3" name="{1001,97}: {1001,7935}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="116001" average="176000" max="266000" />
+      <research time="570">
+        <primary>
+          <ware ware="energycells" amount="2010" />
+          <ware ware="computronicsubstrate" amount="65" />
+          <ware ware="siliconcarbide" amount="95" />
+          <ware ware="metallicmicrolattice" amount="650" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_equipment_ter_4" name="{1001,97}: {1001,7935}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="266001" average="356000" max="428000" />
+      <research time="690">
+        <primary>
+          <ware ware="energycells" amount="2150" />
+          <ware ware="computronicsubstrate" amount="145" />
+          <ware ware="siliconcarbide" amount="145" />
+          <ware ware="metallicmicrolattice" amount="950" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_equipment_ter_5" name="{1001,97}: {1001,7935}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="428001" average="710000" max="970000" />
+      <research time="800">
+        <primary>
+          <ware ware="energycells" amount="6100" />
+          <ware ware="computronicsubstrate" amount="275" />
+          <ware ware="siliconcarbide" amount="265" />
+          <ware ware="metallicmicrolattice" amount="1690" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_equipment_ter_6" name="{1001,97}: {1001,7935}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="970001" average="1230000" max="2155000" />
+      <research time="960">
+        <primary>
+          <ware ware="energycells" amount="23875" />
+          <ware ware="computronicsubstrate" amount="480" />
+          <ware ware="siliconcarbide" amount="450" />
+          <ware ware="metallicmicrolattice" amount="2760" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_equipment_ter_7" name="{1001,97}: {1001,7935}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="2155001" average="3080000" max="5070000" />
+      <research time="1100">
+        <primary>
+          <ware ware="energycells" amount="7665" />
+          <ware ware="computronicsubstrate" amount="1300" />
+          <ware ware="siliconcarbide" amount="1135" />
+          <ware ware="metallicmicrolattice" amount="6250" />
+        </primary>
+      </research>
+    </ware>
+    <ware id="rbm_equipment_ter_8" name="{1001,97}: {1001,7935}" description="{1001,97}: {1001,1103}" transport="research" volume="1" tags="research" sortorder="102">
+      <price min="5070001" average="7065000" max="15000000" />
+      <research time="1300">
+        <primary>
+          <ware ware="energycells" amount="5500" />
+          <ware ware="computronicsubstrate" amount="2570" />
+          <ware ware="siliconcarbide" amount="2215" />
+          <ware ware="metallicmicrolattice" amount="12875" />
         </primary>
       </research>
     </ware>

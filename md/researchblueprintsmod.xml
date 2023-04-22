@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mdscript name="ResearchBlueprintsMod" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="md.xsd">
   <cues>
-    <cue name="Main">
+    <cue name="Main" version="2">
       <actions>
         <set_value name="$choices" exact="[]"/>
         <set_value name="$researchInProgress" exact="0"/>
@@ -30,9 +30,25 @@
           [ware.rbm_engine_1, ware.rbm_engine_2, ware.rbm_engine_3, ware.rbm_engine_4, ware.rbm_engine_5, ware.rbm_engine_6, ware.rbm_engine_7, ware.rbm_engine_8],
           [],
           [ware.rbm_shield_1, ware.rbm_shield_2, ware.rbm_shield_3],
-          [ware.rbm_consumable_1, ware.rbm_consumable_2, ware.rbm_consumable_3, ware.rbm_consumable_4]
+          [ware.rbm_consumable_1, ware.rbm_consumable_2, ware.rbm_consumable_3, ware.rbm_consumable_4],
+          [ware.rbm_module_ter_1, ware.rbm_module_ter_2, ware.rbm_module_ter_3, ware.rbm_module_ter_4, ware.rbm_module_ter_5, ware.rbm_module_ter_6, ware.rbm_module_ter_7],
+          [ware.rbm_ship_ter_1, ware.rbm_ship_ter_2, ware.rbm_ship_ter_3, ware.rbm_ship_ter_4, ware.rbm_ship_ter_5, ware.rbm_ship_ter_6, ware.rbm_ship_ter_7],
+          [ware.rbm_equipment_ter_1, ware.rbm_equipment_ter_2, ware.rbm_equipment_ter_3, ware.rbm_equipment_ter_4, ware.rbm_equipment_ter_5, ware.rbm_equipment_ter_6, ware.rbm_equipment_ter_7, ware.rbm_equipment_ter_8],
+          [ware.rbm_module_bor_1, ware.rbm_module_bor_2, ware.rbm_module_bor_3, ware.rbm_module_bor_4, ware.rbm_module_bor_5, ware.rbm_module_bor_6, ware.rbm_module_bor_7],
+          [ware.rbm_ship_bor_1, ware.rbm_ship_bor_2, ware.rbm_ship_bor_3, ware.rbm_ship_bor_4, ware.rbm_ship_bor_5, ware.rbm_ship_bor_6, ware.rbm_ship_bor_7]
           ]"/>
+        <set_value name="$categoryenum" />
       </actions>
+      <patch sinceversion="2">
+        <set_value name="$categoryenum" />
+        <append_list_elements name="$categories" other="[
+          [ware.rbm_module_ter_1, ware.rbm_module_ter_2, ware.rbm_module_ter_3, ware.rbm_module_ter_4, ware.rbm_module_ter_5, ware.rbm_module_ter_6, ware.rbm_module_ter_7],
+          [ware.rbm_ship_ter_1, ware.rbm_ship_ter_2, ware.rbm_ship_ter_3, ware.rbm_ship_ter_4, ware.rbm_ship_ter_5, ware.rbm_ship_ter_6, ware.rbm_ship_ter_7],
+          [ware.rbm_equipment_ter_1, ware.rbm_equipment_ter_2, ware.rbm_equipment_ter_3, ware.rbm_equipment_ter_4, ware.rbm_equipment_ter_5, ware.rbm_equipment_ter_6, ware.rbm_equipment_ter_7, ware.rbm_equipment_ter_8],
+          [ware.rbm_module_bor_1, ware.rbm_module_bor_2, ware.rbm_module_bor_3, ware.rbm_module_bor_4, ware.rbm_module_bor_5, ware.rbm_module_bor_6, ware.rbm_module_bor_7],
+          [ware.rbm_ship_bor_1, ware.rbm_ship_bor_2, ware.rbm_ship_bor_3, ware.rbm_ship_bor_4, ware.rbm_ship_bor_5, ware.rbm_ship_bor_6, ware.rbm_ship_bor_7]
+          ]" />
+      </patch>
       <cues>
         <cue name="RBM_Start" instantiate="true">
           <conditions>
@@ -116,6 +132,12 @@
           21=thruster
           22=shield
           23=consumables
+          == DLC == (not separated in dialog, only in $categories)
+          24=terran modules
+          25=terran ships
+          26=terran equipment
+          27=boron modules
+          28=boron ships
         -->
         <cue name="RBM_choose_blueprints_handler" instantiate="true">
           <conditions>
@@ -139,6 +161,7 @@
                   ]"/> <!-- [modules, ships, equipment]-->
               </do_if>
               <do_elseif value="event.param2 == 2"> <!-- modules -->
+                <set_value name="$categoryenum" exact="2"/>
                 <set_value name="$choices" exact="[
                   table[$text={1001,2421}, $choiceparam=5, $baseparam=event.param2],
                   table[$text={1001,2439}, $choiceparam=6, $baseparam=event.param2],
@@ -150,6 +173,7 @@
                   ]"/> <!-- production, build, storage, habitation, def, dock, other -->
               </do_elseif>
               <do_elseif value="event.param2 == 3"> <!-- ships -->
+                <set_value name="$categoryenum" exact="3"/>
                 <set_value name="$choices" exact="[
                   table[$text={1001,11003}, $choiceparam=12, $baseparam=event.param2],
                   table[$text={1001,11002}, $choiceparam=13, $baseparam=event.param2],
@@ -195,7 +219,6 @@
                     <set_value name="$kind" exact="[class.production, class.buildmodule, class.storage, class.habitation, class.defencemodule, class.dockarea, class.pier]"/>
                     <set_value name="$other" exact="true"/>
                   </do_else>
-                  <set_value name="$category" exact="2"/>
                 </do_if>
                 <do_elseif value="event.param2 le 15">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.ship"/>
@@ -211,7 +234,6 @@
                   <do_else> <!-- event.param2 == 15 -->
                     <set_value name="$kind" exact="class.ship_s"/>
                   </do_else>
-                  <set_value name="$category" exact="3"/>
                 </do_elseif>
                 <do_elseif value="event.param2 le 17">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.weapon"/>
@@ -221,7 +243,7 @@
                   <do_else> <!-- event.param2 == 17-->
                     <set_value name="$kind" exact="class.missilelauncher"/>
                   </do_else>
-                  <set_value name="$category" exact="16"/>
+                  <set_value name="$categoryenum" exact="16"/>
                 </do_elseif>
                 <do_elseif value="event.param2 le 19">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.turret"/>
@@ -231,39 +253,38 @@
                   <do_else> <!-- event.param2 == 19-->
                     <set_value name="$kind" exact="class.missileturret"/>
                   </do_else>
-                  <set_value name="$category" exact="18"/>
+                  <set_value name="$categoryenum" exact="18"/>
                 </do_elseif>
                 <do_elseif value="event.param2 == 20">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.engine"/>
                   <set_value name="$kind" exact="class.engine"/>
-                  <set_value name="$category" exact="20"/>
+                  <set_value name="$categoryenum" exact="20"/>
                 </do_elseif>
                 <do_elseif value="event.param2 == 21">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.thruster"/>
                   <set_value name="$kind" exact="class.engine"/>
-                  <set_value name="$category" exact="20"/>
+                  <set_value name="$categoryenum" exact="20"/>
                 </do_elseif>
                 <do_elseif value="event.param2 == 22">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.shield"/>
                   <set_value name="$kind" exact="class.shieldgenerator"/>
-                  <set_value name="$category" exact="22"/>
+                  <set_value name="$categoryenum" exact="22"/>
                 </do_elseif>
                 <do_else> <!-- event.param2 == 23 -->
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.equipment"/>
                   <set_value name="$kind" exact="[class.shieldgenerator, class.engine, class.turret, class.missileturret, class.weapon, class.missilelauncher]"/>
                   <set_value name="$other" exact="true"/>
-                  <set_value name="$category" exact="23"/>
+                  <set_value name="$categoryenum" exact="23"/>
                 </do_else>
                 <set_value name="$choices" exact="[]"/>
                 <do_for_each in="$wares" name="$ware">
                   <do_if negate="true" value="player.blueprints.{$ware}.any.exists or $ware.hastag.missiononly or $ware.hastag.noblueprint or $ware.hastag.noplayerbuild or $ware.hastag.software or ($ware.objectmacro.isclass.{$kind} == $other)">
-                    <append_to_list name="$choices" exact="table[$text=$ware.name, $choiceparam=table[$ware=$ware, $category=$category], $baseparam=event.param2]" />
+                    <append_to_list name="$choices" exact="table[$text=$ware.name, $choiceparam=$ware, $baseparam=event.param2]" />
                   </do_if>
                 </do_for_each>
                 <remove_value name="$other" />
                 <remove_value name="$kind" />
                 <remove_value name="$wares" />
-                <remove_value name="$category" />
               </do_else>
               <signal_cue_instantly cue="RBM_fill_menu_handler"/>
             </do_if>
@@ -313,20 +334,39 @@
             <event_cue_signalled />
           </conditions>
           <actions>
-            <set_value name="$ware" exact="event.param.$ware"/>
-            <do_for_each in="$categories.{event.param.$category}" name="$rbmWare">
-              <do_if value="$ware.averageprice ge $rbmWare.minprice and $ware.averageprice le $rbmWare.maxprice">
-                <set_value name="$researchInProgress" exact="$ware"/>
-                <add_encyclopedia_entry type="researchables" item="$rbmWare.id"/>
-                <set_value name="$currentRbm" exact="$rbmWare"/>
-                <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7407}, $researchInProgress]"/>
+            <set_value name="$ware" exact="event.param"/>
+            <do_if value="@$ware.resources.{@ware.computronicsubstrate}.exists or @$ware.resources.{@ware.siliconcarbide}.exists"> <!-- terran -->
+              <do_if value="$categoryenum == 2"> <!-- module -->
+                <set_value name="$categoryenum" exact="24"/>
+              </do_if>
+              <do_elseif value="$categoryenum == 3"> <!-- ship -->
+                <set_value name="$categoryenum" exact="25"/>
+              </do_elseif>
+              <do_else> <!-- equipment -->
+                <set_value name="$categoryenum" exact="26"/>
+              </do_else>
+            </do_if>
+            <do_elseif value="$ware.resources.{ware.water}.exists"> <!-- boron -->
+              <do_if value="$categoryenum == 2"> <!-- module -->
+                <set_value name="$categoryenum" exact="27"/>
+              </do_if>
+              <do_else> <!-- ship -->
+                <set_value name="$categoryenum" exact="28"/>
+              </do_else>
+            </do_elseif>
+            <set_value name="$rbmsearch" exact="$categories.{$categoryenum}.last"/>
+            <do_for_each in="$categories.{$categoryenum}" name="$rbmWare">
+              <do_if value="$ware.averageprice le $rbmWare.maxprice">
+                <set_value name="$rbmsearch" exact="$rbmWare"/>
                 <break />
               </do_if>
             </do_for_each>
-            <do_if value="@$researchInProgress" negate="true">
-              <write_to_logbook category="upkeep" title="'could not start research for wareID: %s, avprice: %s, class: %s, tags: %s, resources: %s'.[$ware.id, $ware.averageprice, $ware.objectmacro.class, $ware.tags, $ware.resources.table]" />
-            </do_if>
+            <set_value name="$researchInProgress" exact="$ware"/>
+            <add_encyclopedia_entry type="researchables" item="$rbmsearch.id"/>
+            <set_value name="$currentRbm" exact="$rbmsearch"/>
+            <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7407}, $researchInProgress]"/>
             <remove_value name="$ware" />
+            <remove_value name="$rbmsearch" />
           </actions>
         </cue>
         <cue name="RBM_show_status_handler" instantiate="true">
