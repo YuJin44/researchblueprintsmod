@@ -53,8 +53,8 @@
         <cue name="RBM_Start" instantiate="true">
           <conditions>
             <check_any>
-              <event_conversation_started conversation="default" actor="md.$PersistentCharacters.$BosoTa"/>
-              <event_conversation_returned_to_section section="default" actor="md.$PersistentCharacters.$BosoTa"/>
+              <event_conversation_started conversation="default" actor="@player.headquarters.controlentity.{controlpost.manager}"/>
+              <event_conversation_returned_to_section section="default" actor="@player.headquarters.controlentity.{controlpost.manager}"/>
             </check_any>
             <check_value value="@player.entity.$x4ep1_hq_research_unlocked"/>
           </conditions>
@@ -63,7 +63,6 @@
               <set_value name="md.ExtendedConversationMenu.Main.$convOptions.$researchBlueprintsMod" exact="table[ $signalCue = RBM_Main, $params = [] ]"/>
             </do_if>
             <do_else>
-              <add_player_choice_return text="{1002,2}" position="bottom_right" comment="Goodbye" returnparam="[true, event.param2]" />
               <signal_cue_instantly cue="RBM_Main"/>
             </do_else>
           </actions>
@@ -198,19 +197,19 @@
                 <do_if value="event.param2 le 11">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.module"/>
                   <do_if value="event.param2 == 5">
-                    <set_value name="$kind" exact="class.production"/>
+                    <set_value name="$kind" exact="[class.production]"/>
                   </do_if>
                   <do_elseif value="event.param2 == 6">
-                    <set_value name="$kind" exact="class.buildmodule"/>
+                    <set_value name="$kind" exact="[class.buildmodule]"/>
                   </do_elseif>
                   <do_elseif value="event.param2 == 7">
-                    <set_value name="$kind" exact="class.storage"/>
+                    <set_value name="$kind" exact="[class.storage]"/>
                   </do_elseif>
                   <do_elseif value="event.param2 == 8">
-                    <set_value name="$kind" exact="class.habitation"/>
+                    <set_value name="$kind" exact="[class.habitation]"/>
                   </do_elseif>
                   <do_elseif value="event.param2 == 9">
-                    <set_value name="$kind" exact="class.defencemodule"/>
+                    <set_value name="$kind" exact="[class.defencemodule]"/>
                   </do_elseif>
                   <do_elseif value="event.param2 == 10">
                     <set_value name="$kind" exact="[class.dockarea, class.pier]"/>
@@ -223,51 +222,51 @@
                 <do_elseif value="event.param2 le 15">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.ship"/>
                   <do_if value="event.param2 == 12">
-                    <set_value name="$kind" exact="class.ship_xl"/>
+                    <set_value name="$kind" exact="[class.ship_xl]"/>
                   </do_if>
                   <do_elseif value="event.param2 == 13">
-                    <set_value name="$kind" exact="class.ship_l"/>
+                    <set_value name="$kind" exact="[class.ship_l]"/>
                   </do_elseif>
                   <do_elseif value="event.param2 == 14">
-                    <set_value name="$kind" exact="class.ship_m"/>
+                    <set_value name="$kind" exact="[class.ship_m]"/>
                   </do_elseif>
                   <do_else> <!-- event.param2 == 15 -->
-                    <set_value name="$kind" exact="class.ship_s"/>
+                    <set_value name="$kind" exact="[class.ship_s]"/>
                   </do_else>
                 </do_elseif>
                 <do_elseif value="event.param2 le 17">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.weapon"/>
                   <do_if value="event.param2 == 16">
-                    <set_value name="$kind" exact="class.weapon"/>
+                    <set_value name="$kind" exact="[class.weapon]"/>
                   </do_if>
                   <do_else> <!-- event.param2 == 17-->
-                    <set_value name="$kind" exact="class.missilelauncher"/>
+                    <set_value name="$kind" exact="[class.missilelauncher]"/>
                   </do_else>
                   <set_value name="$categoryenum" exact="16"/>
                 </do_elseif>
                 <do_elseif value="event.param2 le 19">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.turret"/>
                   <do_if value="event.param2 == 18">
-                    <set_value name="$kind" exact="class.turret"/>
+                    <set_value name="$kind" exact="[class.turret]"/>
                   </do_if>
                   <do_else> <!-- event.param2 == 19-->
-                    <set_value name="$kind" exact="class.missileturret"/>
+                    <set_value name="$kind" exact="[class.missileturret]"/>
                   </do_else>
                   <set_value name="$categoryenum" exact="18"/>
                 </do_elseif>
                 <do_elseif value="event.param2 == 20">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.engine"/>
-                  <set_value name="$kind" exact="class.engine"/>
+                  <set_value name="$kind" exact="[class.engine]"/>
                   <set_value name="$categoryenum" exact="20"/>
                 </do_elseif>
                 <do_elseif value="event.param2 == 21">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.thruster"/>
-                  <set_value name="$kind" exact="class.engine"/>
+                  <set_value name="$kind" exact="[class.engine]"/>
                   <set_value name="$categoryenum" exact="20"/>
                 </do_elseif>
                 <do_elseif value="event.param2 == 22">
                   <get_ware_definition result="$wares" flags="allowplayerblueprint" tags="tag.shield"/>
-                  <set_value name="$kind" exact="class.shieldgenerator"/>
+                  <set_value name="$kind" exact="[class.shieldgenerator]"/>
                   <set_value name="$categoryenum" exact="22"/>
                 </do_elseif>
                 <do_else> <!-- event.param2 == 23 -->
@@ -278,7 +277,7 @@
                 </do_else>
                 <set_value name="$choices" exact="[]"/>
                 <do_for_each in="$wares" name="$ware">
-                  <do_if negate="true" value="player.blueprints.{$ware}.any.exists or $ware.hastag.missiononly or $ware.hastag.noblueprint or $ware.hastag.noplayerbuild or $ware.hastag.software or ($ware.objectmacro.isclass.{$kind} == $other)">
+                  <do_if negate="true" value="player.blueprints.{$ware}.any.exists or $ware.hastag.missiononly or $ware.hastag.noblueprint or $ware.hastag.noplayerbuild or $ware.hastag.software or ($kind.indexof.{$ware.objectmacro.class} ge 1) == $other">
                     <append_to_list name="$choices" exact="table[$text=$ware.name, $choiceparam=$ware, $baseparam=event.param2]" />
                   </do_if>
                 </do_for_each>
@@ -380,7 +379,7 @@
         <cue name="RBM_lock_cancelling_handler" instantiate="true">
           <conditions>
             <check_any>
-              <event_player_production_started research="true" ware="$currentRbm"/>
+              <event_player_production_started research="true" ware="@$currentRbm"/>
             </check_any>
           </conditions>
           <actions>
