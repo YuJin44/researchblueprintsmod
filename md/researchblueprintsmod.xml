@@ -366,6 +366,7 @@
             <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7407}, $researchInProgress]"/>
             <remove_value name="$ware" />
             <remove_value name="$rbmsearch" />
+            <add_npc_line line="10305"/>
           </actions>
         </cue>
         <cue name="RBM_show_status_handler" instantiate="true">
@@ -374,6 +375,7 @@
           </conditions>
           <actions>
             <show_notification text="'%s: %s'.[{1004, 71}, $researchInProgress]" />
+            <add_npc_line line="2103"/>
           </actions>
         </cue>
         <cue name="RBM_lock_cancelling_handler" instantiate="true">
@@ -405,6 +407,7 @@
             <remove_encyclopedia_entry type="researchables" item="$currentRbm.id"/>
             <remove_value name="$researchInProgress"/>
             <remove_value name="$currentRbm"/>
+            <add_npc_line line="2104"/>
           </actions>
         </cue>
         <cue name="RBM_research_finished_handler" instantiate="true">
