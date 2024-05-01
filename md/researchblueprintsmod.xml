@@ -380,9 +380,7 @@
         </cue>
         <cue name="RBM_lock_cancelling_handler" instantiate="true">
           <conditions>
-            <check_any>
-              <event_player_production_started research="true" ware="@$currentRbm"/>
-            </check_any>
+            <event_player_production_started research="true" ware="@$currentRbm"/>
           </conditions>
           <actions>
             <set_value name="$researchActive" exact="true"/>
@@ -390,9 +388,7 @@
         </cue>
         <cue name="RBM_unlock_cancelling_handler" instantiate="true">
           <conditions>
-            <check_any>
-              <event_player_production_cancelled research="true"/>
-            </check_any>
+            <event_player_production_cancelled research="true"/>
           </conditions>
           <actions>
             <set_value name="$researchActive" exact="false"/>
@@ -412,7 +408,7 @@
         </cue>
         <cue name="RBM_research_finished_handler" instantiate="true">
           <conditions>
-            <event_player_production_finished ware="$currentRbm" research="true"/>
+            <event_player_production_finished ware="@$currentRbm" research="true"/>
           </conditions>
           <actions>
             <write_to_logbook category="upkeep" title="'%s %s'.[{1001,97}, {1001,7400}]" text="'%s: %s'.[{1001, 7408}, $researchInProgress]"/>

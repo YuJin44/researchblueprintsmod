@@ -322,7 +322,7 @@
         <primary>
           <ware ware="energycells" amount="294500" />
           <ware ware="claytronics" amount="12120" />
-          <ware ware="hullparts" amount="785100" />
+          <ware ware="hullparts" amount="75100" />
           <ware ware="water" amount="179600" />
         </primary>
       </research>
